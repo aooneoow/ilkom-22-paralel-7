@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Kas Kelas</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            margin: 0;
+            background: #f5f6fa;
+            color: #333;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #43a047;
+            padding: 18px 30px;
+            color: white;
+            font-size: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            margin-left: 20px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+        .navbar a:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* CONTAINER */
+        .container {
+            padding: 30px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+        .card h2 {
+            margin: 0 0 18px 0;
+            font-size: 23px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* DATA BOX */
+        .data-box {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .info {
+            flex: 1;
+            min-width: 200px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+            transition: 0.25s ease;
+        }
+        .info:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+        }
+        .info h3 {
+            margin: 0;
+            color: #2e7d32;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .info p {
+            margin-top: 6px;
+            color: #555;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <span style="font-weight:600;">Dashboard Kas Kelas</span>
+        <div>
+            <a href="/kas_masuk">Kas Masuk</a>
+            <a href="/kas_keluar">Kas Keluar</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Ringkasan Kas</h2>
+            <div class="data-box">
+                <div class="info">
+                    <h3>Rp {{ masuk|rupiah }}</h3>
+                    <p>Total Kas Masuk</p>
+                </div>
+                <div class="info">
+                    <h3>Rp {{ keluar|rupiah }}</h3>
+                    <p>Total Kas Keluar</p>
+                </div>
+                <div class="info">
+                    <h3>Rp {{ saldo|rupiah }}</h3>
+                    <p>Saldo Akhir</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

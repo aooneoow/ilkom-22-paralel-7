@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kas Keluar</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f1f1f1; margin: 0; }
+
+        /* NAVBAR */
+        .navbar { background: #d32f2f; padding: 18px 30px; color: white; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.2); }
+        .navbar a { color: white; margin-left: 20px; text-decoration: none; font-weight: 500; }
+        .navbar a:hover { text-decoration: underline; }
+
+        /* CONTAINER */
+        .container { max-width: 900px; margin: auto; padding: 25px; }
+
+        /* CARD */
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .card h2 { margin-top: 0; color: #d32f2f; }
+
+        /* INPUT */
+        input[type=text], input[type=number] {
+            padding: 12px; width: 100%; margin: 6px 0 15px 0; border-radius: 8px; border: 1px solid #bbb;
+            transition: 0.2s;
+        }
+        input:focus { border-color: #d32f2f; outline: none; box-shadow: 0 0 5px rgba(211,47,47,0.4); }
+
+        /* BUTTON */
+        button {
+            padding: 12px 18px; background: #d32f2f; color:white; border: none; border-radius: 8px;
+            cursor: pointer; font-size: 15px; transition: 0.2s;
+        }
+        button:hover { background: #b71c1c; }
+
+        /* TABLE */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 8px; overflow: hidden; }
+        th { background: #d32f2f; color: white; padding: 12px; }
+        td { padding: 12px; border-bottom: 1px solid #e0e0e0; background: #fff; }
+        tr:hover td { background: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <span style="font-size: 20px; font-weight:600;">Kas Keluar</span>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/kas_masuk">Kas Masuk</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h2>Tambah Kas Keluar</h2>
+            <form action="/kas_keluar/tambah" method="POST">
+                <label>Keterangan</label>
+                <input type="text" name="keterangan" placeholder="Contoh: Pembelian alat tulis" required>
+
+                <label>Nominal</label>
+                <input type="number" name="nominal" placeholder="Masukkan nominal..." required>
+
+                <button type="submit">Tambah</button>
+            </form>
+        </div>
+
+        <div class="card" style="margin-top:25px;">
+            <h2>Data Kas Keluar</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Tanggal</th>
+                    <th>Keterangan</th>
+                    <th>Nominal</th>
+                </tr>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.tanggal }}</td>
+                    <td>{{ row.keterangan }}</td>
+                    <td>Rp {{ row.nominal|rupiah }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

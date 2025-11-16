@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kas Masuk</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #f1f1f1; margin: 0; }
+
+        /* NAVBAR */
+        .navbar { background: #43a047; padding: 18px 30px; color: white; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 3px 10px rgba(0,0,0,0.2); }
+        .navbar a { color: white; margin-left: 20px; text-decoration: none; font-weight: 500; }
+        .navbar a:hover { text-decoration: underline; }
+
+        /* CONTAINER */
+        .container { max-width: 900px; margin: auto; padding: 25px; }
+
+        /* CARD */
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08); }
+        .card h2 { margin-top: 0; color: #43a047; }
+
+        /* INPUT */
+        input[type=text], input[type=number] {
+            padding: 12px; width: 100%; margin: 6px 0 15px 0; border-radius: 8px; border: 1px solid #bbb;
+            transition: 0.2s;
+        }
+        input:focus { border-color: #43a047; outline: none; box-shadow: 0 0 5px rgba(67,160,71,0.4); }
+
+        /* BUTTON */
+        button {
+            padding: 12px 18px; background: #43a047; color:white; border: none; border-radius: 8px;
+            cursor: pointer; font-size: 15px; transition: 0.2s;
+        }
+        button:hover { background: #2e7d32; }
+
+        /* TABLE */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; border-radius: 8px; overflow: hidden; }
+        th { background: #43a047; color: white; padding: 12px; }
+        td { padding: 12px; border-bottom: 1px solid #e0e0e0; background: #fff; }
+        tr:hover td { background: #f9f9f9; }
+            /* HEADER TITLE */
+        .page-title {
+            font-size: 22px;
+            font-weight: 700;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        /* TABLE HEADER SHADOW */
+        thead { box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        /* ROW ANIMATION */
+        tr { transition: 0.2s; }
+
+        /* CARD SPACING FIX */
+        .card + .card { margin-top: 28px; }
+
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <span style="font-size: 20px; font-weight:600;">Kas Masuk</span>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/kas_keluar">Kas Keluar</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+        <div class="container">
+        <div class="page-title">Pencatatan Kas Masuk</div>
+        <div class="card">
+            <h2 style="font-weight:600;">Tambah Kas Masuk</h2>
+            <p style="margin-top:-10px; color:#555; font-size:14px;">Masukkan data pemasukan kas kelas secara lengkap.</p>
+            <form action="/kas_masuk/tambah" method="POST">
+                <label>Keterangan</label>
+                <input type="text" name="keterangan" placeholder="Contoh: Iuran kelas" required>
+
+                <label>Nominal</label>
+                <input type="number" name="nominal" placeholder="Masukkan nominal..." required>
+
+                <button type="submit">Tambah</button>
+            </form>
+        </div>
+
+        <div class="card" style="margin-top:25px;">
+            <h2 style="font-weight:600;">Data Kas Masuk</h2>
+            <p style="margin-top:-10px; color:#555; font-size:14px;">Riwayat seluruh pemasukan kas yang telah dicatat.</p>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Tanggal</th>
+                    <th>Keterangan</th>
+                    <th>Nominal</th>
+                </tr>
+                {% for row in data %}
+                <tr>
+                    <td>{{ row.id }}</td>
+                    <td>{{ row.tanggal }}</td>
+                    <td>{{ row.keterangan }}</td>
+                    <td>Rp {{ row.nominal|rupiah }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Kas Kelas - Login</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6a5acd, #8360c3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px;
+            width: 350px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 35px rgba(0, 0, 0, 0.15);
+            text-align: center;
+        }
+
+        .title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            margin-bottom: 25px;
+            color: #f1f1f1;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #fff;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 12px;
+            background: #ffffff;
+            margin-top: 18px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #e0e0e0;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="title">Sistem Kas Kelas</div>
+        <div class="subtitle">Kelola pemasukan & pengeluaran kelas dengan mudah</div>
+
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label>Username / NIM</label>
+                <input type="text" name="username" placeholder="Masukkan username" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Masukkan password" required>
+            </div>
+
+            <button type="submit">Masuk</button>
+        </form>
+
+        <div class="footer">
+            © 2025 Sistem Kas Kelas · All Rights Reserved
+        </div>
+    </div>
+
+</body>
+</html>
